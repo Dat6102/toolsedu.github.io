@@ -1,0 +1,6 @@
+gồm có các mảng sau:
+- giao diện menu
++ máy cân bằng phương trình hoá học 
++ máy từ điển tiếng Anh
++ Bot Chat (gemini api)
++ kết nối với thcs tam thanh violet

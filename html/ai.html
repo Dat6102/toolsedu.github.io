@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="../css/ai.css">
+  <link rel="icon" type="image" href="https://cdn.discordapp.com/attachments/1126497000179912841/1325438171789525094/20250105_191744.jpg?ex=677bc9fd&is=677a787d&hm=d0a32c9d030bad3e7917cdd4d804fea68855db5c9a4048f4bbfbd9d0bfd8a752&">
+</head>
+<body>
+  <div class="chat-container">
+    <h1>ToolsEdu Chatbot</h1>
+    <div id="chat-box">
+      <div class="message system">Hãy đặt câu hỏi của bạn., lưu ý: bot không thể nhớ các câu hỏi trước đó!</div>
+    </div>
+    <div class="input-container">
+      <button class="backtomenu" onclick="backToMenu()">
+            <img src="../images/backtomenu.png" alt="Icon">
+        Về menu
+      </button>
+      <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn...">
+      <button id="send-btn" class="send-button">
+            <img src="../images/send.png" alt="Icon">
+      </button>
+    </div>
+  </div>
+  <script src="../js/ai.js"></script>
+  <script src="../js/backtomenu.js" defer></script>
+</body>
+</html>

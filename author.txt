@@ -1,0 +1,19 @@
+# Tác giả của dự án/sản phẩm: 
+# - 50% Huỳnh Tấn Đạt: Người đảm nhận trong việc xử lý phần backend và frontend  (cả html, javascript và framework python)
+# - 50% Nguyễn Ngô Khánh Ngọc: Người đảm nhận trong việc thiết kế CSS trong phần frontend  
+#
+# Email liên hệ: tandathuynh1102@gmail.com  
+# Số điện thoại: 0963435336
+#
+# Ngày bắt đầu dự án: 30/10/2024  
+# Ngày hoàn thành: Dự án chưa hoàn thành  
+#
+# Mô tả:  
+# Dự án này nhằm mục đích tham gia cuộc thi lập trình.  
+#
+# Thông tin bản quyền:  
+# - `js/canbangpt.js` đã được cấp phép bởi Nayuki, thông tin bản quyền  trong thư mục`LICIENSE/Chemical equation balancer.pdf`.  
+# -  .  
+#
+# Ghi chú:  
+# Vui lòng liên hệ qua email nếu có thắc mắc liên quan đến dự án.

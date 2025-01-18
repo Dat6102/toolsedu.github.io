@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'MyFont'; 
+  src: url('../fonts/Times New Roman.ttf') format('truetype'),
+}
+
+body {
+    font-family: MyFont;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 93%;
+    padding: 10px;
+    margin: 10px 0
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #5cb85c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4cae4c;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.backtomenu {
+    margin-inline: 5px;
+    left: 10px; 
+    background-color: #60af02;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: MyFont;
+    font-size: 10px;
+    width: 90px;
+    height: 30px;
+}
+
+.backtomenu:active {
+    background-color: #05ff33;
+    transform: scale(1.05);
+}
+
+.backtomenu img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nút chuyển trang</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Liên kết đến file CSS -->
+</head>
+<body>
+    <!-- Nút chuyển trang -->
+    <button class="custom-button" onclick="navigateToPage()">
+        <img src="icon.png" alt="Icon">
+        Nhấn để chuyển trang
+    </button>
+
+    <script src="scripts.js"></script> <!-- Liên kết đến file JavaScript -->
+</body>
+</html>

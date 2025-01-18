@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cân bằng phương trình hoá học</title>
+    <link rel="stylesheet" href="../css/canbangpt.css">
+    <script src="../js/canbangpt.js" defer></script>
+    <script src="../js/backtomenu.js" defer></script>
+</head>
+<body>
+    <button class="backtomenu" onclick="backToMenu()">
+        <img src="../images/backtomenu.png" alt="Icon">
+    Về menu
+    </button>
+
+    <h1>Cân bằng phương trình hoá học</h1>
+
+    <!-- Form nhập phương trình hóa học -->
+    <label for="inputFormula">Nhập phương trình:</label>
+    <input type="text" id="inputFormula" placeholder="Ví dụ., H2 + O2 = H2O">
+    <button onclick="balance(document.getElementById('inputFormula').value)">Giải phương trình</button>
+    <button onclick="random()">Phương trình mẫu</button>
+
+    <div id="message"></div>
+    <div id="balanced"></div>
+    <pre id="codeOutput"></pre>
+</body>
+</html>

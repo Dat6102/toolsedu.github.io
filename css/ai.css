@@ -1,0 +1,158 @@
+@font-face {
+  font-family: 'MyFont'; 
+  src: url('../fonts/pixel.ttf') format('truetype'),
+}
+
+body {
+  font-family: MyFont;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 93vh;
+  background-color: #fec900;
+}
+
+.chat-container {
+  height: 92vh;
+  width: 400px;
+  background: #0c6310;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  background: #0c6310;
+  color: white;
+  padding: 15px;
+  margin: 0;
+  font-size: 20px;
+}
+
+#chat-box {
+  height: 70vh;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f8e27f;
+  border-bottom: 1px solid #ccc;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  align-items: flex-start;
+}
+
+.message.system {
+  background: #d1c4e9;
+  color: #6200ea;
+  font-size: 5px;
+}
+
+.message.user {
+  background: #fec900;
+  justify-content: flex-end;
+}
+
+.message.bot {
+  background: #fd3469;
+  justify-content: flex-start;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: #021331;
+}
+
+.message-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block; 
+  border-radius: 50%;
+}
+
+.message.bot .message-logo {
+   background-image: url(../images/bot_icon.png);
+}
+
+.message.user .message-logo{
+  background-image: url(../images/user_icon.png);
+}
+
+.message-text {
+  flex: 1;
+}
+
+.backtomenu {
+    margin-inline: 5px;
+    left: 10px; 
+    background-color: #60af02;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: MyFont;
+    font-size: 10px;
+}
+
+.backtomenu:active {
+    background-color: #05ff33;
+    transform: scale(1.05);
+}
+
+.backtomenu img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.send-button img {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+.input-container {
+  display: flex;
+  padding: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  background: #60af02;
+  color: black;
+  font-family: MyFont;
+  font-size: 10px;
+}
+
+#send-btn {
+  padding: 10px 10px;
+  background: #60af02;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-btn:active {
+  background: #05ff33;
+  transform: scale(0.8);
+  transition: transform 0.1s ease-in-out;
+}
+
