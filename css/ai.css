@@ -42,7 +42,7 @@ h1 {
 }
 
 #chat-box {
-  height: 70vh;
+  height: 75vh;
   padding: 10px;
   overflow-y: auto;
   background: #fff0f0; 
