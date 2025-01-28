@@ -170,49 +170,11 @@ async function getBotResponse() {
   }
 }
 
-const scriptConfig = document.createElement('script');
-scriptConfig.type = 'text/javascript';
-scriptConfig.src = './mathjax-config.js';
-document.head.appendChild(scriptConfig);
-
-const scriptMathJax = document.createElement('script');
-scriptMathJax.type = 'text/javascript';
-scriptMathJax.src = './mathjax/es5/tex-mml-chtml.js';
-document.head.appendChild(scriptMathJax);
-
-function addMessageToChat(message, role) {
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("message", role);
-
-  const messageContent = document.createElement("div");
-  messageContent.classList.add("message-content");
-
-  const logoImg = document.createElement("img");
-  logoImg.classList.add("message-logo");
-  messageContent.appendChild(logoImg);
-
-  const messageText = document.createElement("span");
-  messageText.classList.add("message-text");
-  messageContent.appendChild(messageText);
-
-  messageDiv.appendChild(messageContent);
-  chatBox.appendChild(messageDiv);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  const formattedMessage = message
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.*?)\*/g, "<em>$1</em>");
-
-  messageText.innerHTML = formattedMessage;
-
-  if (role === "bot") {
-    MathJax.typesetPromise([messageText]).then(() => {
-      typeTextEffect(messageText, messageText.innerHTML);
-    }).catch((err) => console.error("MathJax typeset failed: ", err));
+userInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && userInput.value.trim() !== "") {
+    sendButton.click();  
   }
-}
-
-// https://github.com/Dat6102/totenh.github.io
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('iconCanvas');
