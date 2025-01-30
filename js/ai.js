@@ -64,6 +64,7 @@ function showLoadingMessage() {
 
 sendButton.addEventListener("click", async () => {
   const userMessage = userInput.value.trim();
+  userInput.value = "";
   if (userMessage) {
     addMessageToChat(userMessage, "user");
     conversationHistory.push({ role: "user", text: userMessage });
@@ -86,7 +87,6 @@ sendButton.addEventListener("click", async () => {
       logError(error.message);
     }
   }
-  userInput.value = "";
 });
 
 function addMessageToChat(message, role) {
