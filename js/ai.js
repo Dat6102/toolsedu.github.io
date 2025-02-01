@@ -1,7 +1,10 @@
 const apiKey = "AIzaSyCxdXXqwcpUjtFIJinxjvxO7Eev3jBQB5c";
+const googleApiKey = "AIzaSyCuTQpkjstIfVGm_4G4H-KI62eHQGv7cX0";
+const googleCseId = "37cbd03073a4b426f";
 const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendButton = document.getElementById("send-btn");
+const checkbox = document.getElementById('toggle'); 
 
 let loadingInterval;
 
@@ -64,13 +67,25 @@ function showLoadingMessage() {
 sendButton.addEventListener("click", async () => {
     const userMessage = userInput.value.trim();
     userInput.value = "";
+
     if (userMessage) {
         addMessageToChat(userMessage, "user");
 
         const loadingDiv = showLoadingMessage();
 
         try {
-            const botResponse = await getBotResponse(userMessage);
+            let botResponse;
+            if (checkbox.checked) { 
+                const searchQuery = userMessage.trim();
+                const searchResults = await googleSearch(searchQuery);
+                if (searchResults.length > 0) {
+                    botResponse = await getBotResponseWithSearch(userMessage, searchResults);
+                } else {
+                    botResponse = "Không tìm thấy kết quả nào.";
+                }
+            } else {
+                botResponse = await getBotResponse(userMessage);
+            }
 
             clearInterval(loadingInterval);
             loadingDiv.remove();
@@ -85,6 +100,10 @@ sendButton.addEventListener("click", async () => {
         }
     }
 });
+
+function logError(message) {
+    console.error(message);
+}
 
 function addMessageToChat(message, role) {
     const messageDiv = document.createElement("div");
@@ -157,6 +176,113 @@ userInput.addEventListener("keydown", (event) => {
         sendButton.click();
     }
 });
+
+async function googleSearch(query, numResults = 10, start = 1) {
+    const endpoint = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${googleCseId}&key=${googleApiKey}&num=${numResults}&start=${start}`;
+    const response = await fetch(endpoint);
+    if (!response.ok) {
+        throw new Error("Không thể kết nối với API tìm kiếm.");
+    }
+    const data = await response.json();
+    return data.items || [];
+}
+
+async function performSearch(query) {
+    const response = await fetch(
+        `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${cseId}&key=${apiKey}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Không thể kết nối với API tìm kiếm.");
+    }
+
+    const data = await response.json();
+
+    if (data.items && data.items.length > 0) {
+        return data.items
+            .map(
+                (item) =>
+                    `- [${item.title}](${item.link})\n  ${item.snippet}`
+            )
+            .join("\n");
+    } else {
+        return "Không tìm thấy kết quả nào.";
+    }
+}
+
+userInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && userInput.value.trim() !== "") {
+        sendButton.click();
+    }
+});
+
+async function handleUserMessage(userMessage) {
+    addMessageToChat(userMessage, "user");
+
+    const loadingDiv = showLoadingMessage();
+
+    try {
+        let botResponse;
+        if (userMessage.startsWith("Tìm kiếm")) {
+            const searchQuery = userMessage.replace("Tìm kiếm", "").trim();
+            const searchResults = await googleSearch(searchQuery);
+            botResponse = await getBotResponseWithSearch(userMessage, searchResults);
+        } else {
+            botResponse = await getBotResponse(userMessage);
+        }
+
+        clearInterval(loadingInterval);
+        loadingDiv.remove();
+
+        addMessageToChat(botResponse, "bot");
+    } catch (error) {
+        clearInterval(loadingInterval);
+        loadingDiv.remove();
+        console.error("Error:", error);
+        addMessageToChat("Có lỗi xảy ra. Vui lòng thử lại.", "system");
+        logError(error.message);
+    }
+}
+
+function generatePromptWithSearch(userMessage, searchResults) {
+    const searchInfo = searchResults.map((item, index) => {
+        return `Kết quả ${index + 1}:\nTiêu đề: ${item.title}\nMô tả: ${item.snippet}\nURL: ${item.link}\n`;
+    }).join("\n");
+
+    return `Người dùng đã hỏi: "${userMessage}". Dựa trên các kết quả tìm kiếm sau, hãy chọn lọc thông tin phù hợp và trả lời ngắn gọn cho câu hỏi của người dùng.\n\n${searchInfo}\n\n, Lưu ý: Bạn phải chọn lọc thông tin một cách ngắn gọn dựa trên người dùng đã hỏi và hạn chế trả lời đường dẫn của câu. Câu trả lời:`;
+}
+
+async function getBotResponseWithSearch(userMessage, searchResults) {
+    const prompt = generatePromptWithSearch(userMessage, searchResults);
+    const response = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                contents: [
+                    {
+                        parts: [{ text: prompt }],
+                    },
+                ],
+            }),
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Không thể kết nối với API.");
+    }
+
+    const data = await response.json();
+
+    if (data.candidates && data.candidates.length > 0 && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
+        return data.candidates[0].content.parts[0].text;
+    } else {
+        throw new Error("Không có phản hồi hợp lệ từ API.");
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('iconCanvas');
