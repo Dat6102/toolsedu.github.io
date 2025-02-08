@@ -31,8 +31,17 @@
         <img src="../images/backtomenu-v2.png" alt="Quay lại menu">
       </button>
       <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn...">
-      <input type="checkbox" id="toggle">
-      <label for="toggle"></label>
+      <div class="dropdown">
+          <button class="dropdown-button" onclick="toggleDropdown()">
+             <img src="../images/settings.png" alt="Cài đặt mục đích">
+          </button>
+          <div class="dropdown-content" id="dropdownMenu">
+              <a href="#" onclick="selectMode(1)">Hỏi đáp và tư vấn</a>
+              <a href="#" onclick="selectMode(2)">Hỗ trợ nghiên cứu và phát triển</a>
+              <a href="#" onclick="selectMode(3)">Suy luận với độ chính xác cao</a>
+              <a href="#" onclick="selectMode(4)">Tìm thông tin trên Internet</a>
+          </div>
+      </div>
       <button id="send-btn" class="send-button">
         <img src="../images/send-v2.png" alt="Gửi">
       </button>
