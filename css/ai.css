@@ -25,7 +25,7 @@ html, body {
   border: 2px solid #aa0000; 
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: hidden;;
   margin: 0 5px;
   margin-bottom: 15vh;
   margin-top: 10vh;
@@ -150,6 +150,15 @@ canvas {
   margin: 0 auto;
 }
 
+.dropdown-button img {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  pointer-events: none;
+}
+
 .input-container {
   display: flex;
   padding: 10px;
@@ -189,37 +198,66 @@ canvas {
   transition: transform 0.1s ease-in-out;
 }
 
-#user-input::placeholder {
-  color: #aa0000; 
-  font-size: 16px;
+.dropdown {
+    display: inline-block;
 }
 
-input[type="checkbox"] {
+.dropdown-button {
+    background-color: #aa0000; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: MyFont;
+    padding: 10px;
+    margin: 1px;
+}
+
+.dropdown-button:hover {
+    background: linear-gradient(145deg, #2980b9, #2471a3);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-content {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 220px;
+    border-radius: 4px;
+    overflow: visible;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-100px);
+    opacity: 0;
+    z-index: 1;
 }
 
-label {
-  background-color: #aa0000; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: transform 0.2s, background-color 0.2s;
-  font-family: MyFont;
-  padding: 10px;
-  margin: 1px
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(-300px);
+    border: 2px solid #aa0000; 
+    border-radius: 10px;
 }
 
-label {
-    background-image: url('../images/global_off.png');
-    width: 20px;
-    height: 20px;
-    background-size: cover;
+.dropdown-content a {
+    color: #333;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
 }
 
-input[type="checkbox"]:checked + label {
-    background-image: url('../images/global_on.png');
+.dropdown-content a:hover {
+  background: #ff9999; 
+  transition: transform 0.1s ease-in-out;
 }
 
+.dropdown-button:active {
+  background: #ff9999; 
+  transform: scale(0.8);
+}
