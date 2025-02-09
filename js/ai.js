@@ -274,6 +274,12 @@ window.onclick = function(event) {
   }
 };
 
+userInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sendButton.click();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('iconCanvas');
     const ctx = canvas.getContext('2d');
