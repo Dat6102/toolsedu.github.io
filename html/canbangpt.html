@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cân bằng phương trình hoá học</title>
+    <link rel="icon" type="image" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/canbangpt.css">
+    <script src="../js/canbangpt.js" defer></script>
+    <script src="../js/backtomenu.js" defer></script>
+    <script src="../js/canbangpt-background.js" defer></script>
+</head>
+<body>
+        <canvas id="iconCanvas"></canvas>
+        <div class="container">
+            <h1>Cân bằng phương trình hoá học</h1>
+            <h2>Nhập phương trình:</h2>
+            <input type="text" id="inputFormula" placeholder="Ví dụ., H2 + O2 = H2O">
+            <button onclick="balance(document.getElementById('inputFormula').value)">Giải phương trình</button>
+            <button onclick="random()">Phương trình mẫu</button>
+            <div id="message"></div>
+            <div id="balanced" class="balance-box">
+                Phương trình đã cân bằng sẽ ở đây
+            </div>
+            <div><pre id="codeOutput"></pre></div>
+            <button class="backtomenu" onclick="backToMenu()"><img src="../images/backtomenu-v2.png" alt="Icon"></button>
+        </div>
+</body>
+</html>

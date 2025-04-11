@@ -1,0 +1,72 @@
+
+@font-face {
+  font-family: 'MyFont'; 
+  src: url('../fonts/mj.ttf') format('truetype');
+}
+
+body {
+    font-family: MyFont;
+    background: linear-gradient(135deg, #fff0f0, #ffd6d6); 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    position: relative;
+}
+
+.container {
+    margin-top: 50px;
+    background-color: #ffffff; 
+    border: 2px solid #aa0000; 
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 350px;
+    text-align: center;
+}
+
+.title {
+    font-family: MyFont;
+    font-size: 2rem;
+    color: #aa0000; 
+    margin-top: 3px;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+    color: #800000;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.backtomenu {
+    left: 10px; 
+    top: 10%;
+    padding: 10px 15px;
+    margin: 2px;
+    background-color: #aa0000;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: MyFont;
+}
+
+.backtomenu:hover {
+    background-color: #ff9999; 
+}
+
+.backtomenu img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
