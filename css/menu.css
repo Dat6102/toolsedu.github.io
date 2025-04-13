@@ -129,6 +129,15 @@ canvas {
   text-shadow: 0 0 5px #ff9999, 0 0 10px #aa0000;
 }
 
+.text1 {
+  text-align: center;
+  color: #f03c4b;
+  padding: 5px;
+  margin: 0;
+  font-size: 20px;
+  text-shadow: 0 0 5px #ff9999, 0 0 10px #aa0000;
+}
+
 .frosted-glass {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
