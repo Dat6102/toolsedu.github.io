@@ -62,10 +62,10 @@ sendButton.addEventListener("click", async () => {
           botResponse = await getBotResponseWithMode(userMessage, 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey);
           break;
         case 2:
-          botResponse = await getBotResponseWithMode(userMessage, 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-pro-exp-02-05:generateContent?key=' + apiKey);
+          botResponse = await getBotResponseWithMode(userMessage, 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-preview-05-06:generateContent?key=' + apiKey);
           break;
         case 3:
-          botResponse = await getBotResponseWithMode(userMessage, 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-thinking-exp-01-21:generateContent?key=' + apiKey);
+          botResponse = await getBotResponseWithMode(userMessage, 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=' + apiKey);
           break;
         case 4:
           const searchResults = await googleSearch(userMessage);
